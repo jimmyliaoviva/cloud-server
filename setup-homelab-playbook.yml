@@ -1,0 +1,10 @@
+---
+- name: setup homelab
+  hosts: localhost
+  vars: 
+    - var/mount_disk.yml
+    - var/nextcloud.yml
+  roles:
+    - hello-world
+    - setup-nextcloud-with-snap
+...

@@ -1,0 +1,8 @@
+---
+  - name: Hello world
+    command: echo "Hello world"
+    register: result
+
+  - name: print stdout
+    debug:
+      msg: "{{ result.stdout }}"

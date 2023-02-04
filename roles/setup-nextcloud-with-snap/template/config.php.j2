@@ -1,0 +1,55 @@
+<?php
+$CONFIG = array (
+  'apps_paths' => 
+  array (
+    0 => 
+    array (
+      'path' => '/snap/nextcloud/current/htdocs/apps',
+      'url' => '/apps',
+      'writable' => false,
+    ),
+    1 => 
+    array (
+      'path' => '/var/snap/nextcloud/current/nextcloud/extra-apps',
+      'url' => '/extra-apps',
+      'writable' => true,
+    ),
+  ),
+  'supportedDatabases' => 
+  array (
+    0 => 'mysql',
+  ),
+  'memcache.locking' => '\\OC\\Memcache\\Redis',
+  'memcache.local' => '\\OC\\Memcache\\Redis',
+  'redis' => 
+  array (
+    'host' => '/tmp/sockets/redis.sock',
+    'port' => 0,
+  ),
+  'log_type' => 'file',
+  'logfile' => '/var/snap/nextcloud/current/logs/nextcloud.log',
+  'logfilemode' => 416,
+  'instanceid' => 'ocqsvfhhk3cm',
+  'passwordsalt' => 'iQiSV0qwq/IXUmZ2rb8gD0CMpktG7Z',
+  'secret' => 'CAsqjGahRo03osASFt3BfkAnvXcmiFYMXltHE3PpTHMDt2+q',
+  'trusted_domains' => 
+  array (
+	  0 => '{{nextcloud_internal_ip}}',
+	  1 => '{{nextcloud_domain}}'
+  ),
+  'datadirectory' => '{{dadata_directory}}',
+  'dbtype' => 'mysql',
+  'version' => '25.0.2.3',
+  'overwrite.cli.url' => 'http://{{nextcloud_internal_ip}}',
+  'dbname' => 'nextcloud',
+  'dbhost' => 'localhost:/tmp/sockets/mysql.sock',
+  'dbport' => '',
+  'dbtableprefix' => 'oc_',
+  'mysql.utf8mb4' => true,
+  'dbuser' => 'nextcloud',
+  'dbpassword' => '5dx3DY9Je-7DvI7iuEkBZjFk0Rt96Lih59UE-Uoz86MD0BZeeRiSSjNYpEDdQGf8',
+  'installed' => true,
+  'maintenance' => false,
+  'check_data_directory_permissions' => false,
+  'skeletondirectory' => '',
+);

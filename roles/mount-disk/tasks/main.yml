@@ -1,0 +1,9 @@
+---
+
+- name: Mount and bind a volume
+  mount:
+    path: {{}}
+    src: {{}}
+    opts: bind
+    state: mounted
+    fstype: none

@@ -1,0 +1,52 @@
+---
+# if there is an
+
+  - name: snap install nextcloud
+    snap: 
+      name: nextcloud
+    become: yes
+
+  - name: setup removable media
+    command: snap connect nextcloud:removable-media
+    become: yes
+    ignore_errors: true
+
+  - name: set php ram limit to 2048
+    command: snap set nextcloud php.memory-limit=2048M
+    become: yes
+    ignore_errors: true
+  - name: disable nextcloud
+
+    command: snap disable nextcloud 
+    become: yes
+    ignore_errors: true
+
+  - name: check if data directory exist
+    stat:
+      path: {{ data_directory }}/data
+    register: dataDir_st
+
+  - name: copy system data
+    command: cp /var/snap/nextcloud/common/nextcloud/data {{ data_directory }}
+    become: yes
+    ignore_errors: true
+    when: not dataDir_st.stat.exists
+
+  - name: backup old config file
+    command: cp /var/snap/nextcloud/current/nextcloud/config/config.php /var/snap/nextcloud/current/nextcloud/config/config_old.php
+    become: yes
+
+  - name: generate config file
+    template: 
+      src: {{role_path}}/template/config.php.j2
+      dest: /var/snap/nextcloud/current/nextcloud/config/config.php
+    become: yes
+
+  - name: enable nextcloud
+    command: snap enable nextcloud
+    become: yes
+    ignore_errors: true
+
+  - name: enable let's encrypt
+    command: nextcloud.enable-https lets-encrypt
+    become: yes
